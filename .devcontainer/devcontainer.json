@@ -1,0 +1,56 @@
+{
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "EditorConfig.EditorConfig",
+        "ms-python.python",
+        "ms-python.flake8",
+        "ms-python.black-formatter",
+        "njpwerner.autodocstring",
+        "oderwat.indent-rainbow",
+        "ms-python.mypy-type-checker",
+        "ms-python.isort",
+        "github.vscode-github-actions",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "[python]": {
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+          },
+          "editor.defaultFormatter": "ms-python.black-formatter"
+        },
+        "autoDocstring.docstringFormat": "google",
+        "editor.codeActionsOnSave": {
+          "source.fixAll": true
+        },
+        "editor.formatOnSave": true,
+        "files.autoSave": "afterDelay",
+        "files.exclude": {
+          "**/__pycache__": true,
+          ".mypy_cache": true
+        },
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true,
+        "isort.args": [
+          "--profile",
+          "black"
+        ],
+        "python.formatting.provider": "none",
+        "python.linting.enabled": true,
+        "python.linting.flake8Enabled": true,
+        "python.linting.lintOnSave": true,
+        "python.linting.pylintEnabled": false
+      }
+    }
+  },
+  "dockerComposeFile": "docker-compose.yml",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "name": "Sandbox Python",
+  "postCreateCommand": "pip install --user -r requirements.txt",
+  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && pre-commit install",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+}
