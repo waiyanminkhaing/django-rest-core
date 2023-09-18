@@ -18,11 +18,14 @@ class AllInOneMiddleware:
         response = self.get_response(request)
 
         # view_func
-        view_func = request.resolver_match.func
-        if hasattr(view_func, "view_class"):
-            self.view_class = view_func.view_class
-        else:
-            self.view_class = None
+        if hasattr(request, "resolver_match") and hasattr(
+            request.resolver_match, "func"
+        ):
+            view_func = request.resolver_match.func
+            if hasattr(view_func, "view_class"):
+                self.view_class = view_func.view_class
+            else:
+                self.view_class = None
 
         # throttling
         self.throttling(request, response)
