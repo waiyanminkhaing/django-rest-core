@@ -48,7 +48,7 @@ class AllInOneMiddleware:
                 LOGGER.warn(f"Throttling: {name}")
 
     def get_response_throttle_classes(self):
-        if hasattr(self.view_class, "throttle_classes"):
+        if self.view_class and hasattr(self.view_class, "throttle_classes"):
             return [
                 throttle_class()
                 for throttle_class in self.view_class.throttle_classes
