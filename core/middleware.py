@@ -5,7 +5,7 @@ from core.throttling import ResponseRateThrottle
 from core.utils import LOGGER
 
 
-class AllInOneMiddleware:
+class CoreMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
 
@@ -48,7 +48,7 @@ class AllInOneMiddleware:
                 LOGGER.warn(f"Throttling: {name}")
 
     def get_response_throttle_classes(self):
-        if self.view_class and hasattr(self.view_class, "throttle_classes"):
+        if hasattr(self, "view_class") and hasattr(self.view_class, "throttle_classes"):
             return [
                 throttle_class()
                 for throttle_class in self.view_class.throttle_classes
