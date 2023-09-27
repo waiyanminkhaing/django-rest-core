@@ -5,7 +5,7 @@ from django.db import models
 
 
 # Create your models here.
-class BaseModel(models.Model):
+class AbstractBaseModel(models.Model):
     """Base Model."""
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
