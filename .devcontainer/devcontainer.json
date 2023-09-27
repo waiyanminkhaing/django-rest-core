@@ -17,18 +17,24 @@
         "[python]": {
           "editor.codeActionsOnSave": {
             "source.organizeImports": true
-          },
-          "editor.defaultFormatter": "ms-python.black-formatter"
+          }
         },
         "autoDocstring.docstringFormat": "google",
         "editor.codeActionsOnSave": {
           "source.fixAll": true
         },
+        "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true,
+        "editor.python.formatting.provider": "none",
+        "editor.python.linting.enabled": true,
+        "editor.python.linting.flake8Enabled": true,
+        "editor.python.linting.lintOnSave": true,
+        "editor.python.linting.pylintEnabled": false,
         "files.autoSave": "afterDelay",
         "files.exclude": {
           "**/__pycache__": true,
-          ".mypy_cache": true
+          ".mypy_cache": true,
+          ".pytest_cache": true
         },
         "files.insertFinalNewline": true,
         "files.trimTrailingWhitespace": true,
@@ -36,11 +42,11 @@
           "--profile",
           "black"
         ],
-        "python.formatting.provider": "none",
-        "python.linting.enabled": true,
-        "python.linting.flake8Enabled": true,
-        "python.linting.lintOnSave": true,
-        "python.linting.pylintEnabled": false
+        "python.testing.pytestArgs": [
+          "app"
+        ],
+        "python.testing.pytestEnabled": true,
+        "python.testing.unittestEnabled": false
       }
     }
   },
